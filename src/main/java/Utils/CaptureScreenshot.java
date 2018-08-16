@@ -17,6 +17,7 @@ public class CaptureScreenshot {
         String dest = CreateReporterFolder.getsPath()+"/"+screenshotName+".png";
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);
-        return dest;
+        String sImageName = screenshotName+".png";
+        return sImageName;
     }
 }
