@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class BasePageObject {
@@ -34,9 +35,9 @@ public class BasePageObject {
     public BasePageObject clickElement(WebElement element){
 
         wait.until(ExpectedConditions.elementToBeClickable(element));
-        scrollToElement(element);
+        String location = getElementPreparedForImg(element);
         element.click();
-        reportLog("Element was successfully clicked",Status.PASS);
+        reportLog("Element was successfully clicked",Status.PASS,location);
 
         return this;
     }
@@ -58,7 +59,7 @@ public class BasePageObject {
     }
     protected void scrollToElement(WebElement element){
         JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].scrollIntoView(false);", element);
+        executor.executeScript("arguments[0].scrollIntoView(true);", element);
         executor.executeScript("arguments[0].style.border='3px solid red'",element);
     }
 
@@ -87,10 +88,33 @@ public class BasePageObject {
             }
 
     }
+    protected void reportLog(String sMessage,Status status,String sImgLocation) {
 
 
+        try {
+            reporter.log(status, sMessage, MediaEntityBuilder.createScreenCaptureFromPath(sImgLocation).build());
+            if(status.equals(Status.FAIL)){
+                throw new Error(sMessage, new Exception(sMessage));
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
+    }
 
+    public String capturePictureName(){
+        try {
+            return CaptureScreenshot.capture(TestBaseClass.getDriver(), generateRandomImageName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public String getElementPreparedForImg(WebElement element){
+        scrollToElement(element);
+        return capturePictureName();
+    }
 
 
 
