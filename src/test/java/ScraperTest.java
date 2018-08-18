@@ -2,7 +2,7 @@ import Pages.PageNavigator;
 import TestBaseClasses.TestBaseClass;
 import org.testng.annotations.Test;
 
-public class Scraper extends TestBaseClass {
+public class ScraperTest extends TestBaseClass {
 
     @Test
     public void ScrapGitHubTest(){
