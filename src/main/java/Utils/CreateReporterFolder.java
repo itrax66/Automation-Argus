@@ -9,7 +9,7 @@ public class CreateReporterFolder {
 
     private CreateReporterFolder(String folderName){
         sPath = "src/test/Reports/" + folderName;
-        new File(sPath).mkdirs();
+        new File(sPath + "/screenshots").mkdirs();
 
     }
     public static CreateReporterFolder getInstance(String folderName){

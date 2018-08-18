@@ -28,6 +28,9 @@ public class ReportClassConfig
     protected static ExtentTest test;
     protected static CreateReporterFolder folder;
 
+    /**
+     * This class is used for defining the format of the reports
+     */
     @BeforeSuite
     public void InstallReport()
     {

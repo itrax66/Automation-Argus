@@ -14,7 +14,7 @@ public class CaptureScreenshot {
     {
         TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        String dest = CreateReporterFolder.getsPath()+"/"+screenshotName+".png";
+        String dest = CreateReporterFolder.getsPath()+"/screenshots/"+screenshotName+".png";
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);
         String sImageName = screenshotName+".png";

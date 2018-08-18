@@ -2,5 +2,10 @@
   "url" : "https://github.com/",
   "implicitInSeconds" : "15" ,
   "pageToLoadInSeconds" : "60" ,
-  "explicitInSeconds" : "15"
+  "explicitInSeconds" : "15",
+  "DbUrl" : "localhost",
+  "DbPort" : "5432",
+  "DbUser" : "hello",
+  "DbPassword" : "hello",
+  "DataBaseName" : "postgres"
 }

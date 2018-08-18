@@ -13,6 +13,7 @@ public class JsonParser {
     private final Object obj;
     private static JsonParser parser;
 
+    //Defines the file to be read from
     private JsonParser() throws IOException, ParseException {
         obj = new JSONParser().parse(new FileReader("src/main/resources/SystemProperties.json"));
         jo = (JSONObject) obj;
